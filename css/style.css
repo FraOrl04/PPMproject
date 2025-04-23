@@ -28,14 +28,14 @@ body {
     justify-content: space-between;
     align-items: center;
     background: #fff;
-    padding: 10px 15px;
+    padding: 10px 50px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 .logo img {
-    height: 80px;
+    height: 150px;
     width: auto;
 }
 .main-nav {
@@ -107,7 +107,7 @@ body {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
-    border-radius: 10px;
+
 }
 .main-news h2,
 .main-news p {
@@ -116,7 +116,7 @@ body {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
     background: rgba(0, 0, 0, 0.4);
     padding: 10px;
-    border-radius: 6px;
+
 }
 .main-news h2 {
     top: 20px;
@@ -133,13 +133,12 @@ body {
 /* Flash News Grid */
 .flash-news {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
 .flash-news .news {
     background: white;
-    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -156,19 +155,21 @@ body {
 /* Secondary News */
 .Secondary-news {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px,300px));
+    gap: 10px;
+    margin-left: 80px;
     margin-top: 30px;
+    margin-bottom: 20px;
+
 }
 .Secondary-news article {
     background: white;
-    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .Secondary-news article img {
-    width: 100%;
-    height: 100px;
+    width:300px;
+    height:200px;
     object-fit: cover;
 }
 .Secondary-news h2, .Secondary-news h3, .Secondary-news p {
@@ -196,7 +197,7 @@ body {
     height: 60px;
 }
 .Video-section video {
-    margin-left: 20px;
+    margin-left: 55px;
     width: 500px;
     border-radius: 10px;
 }
@@ -219,5 +220,73 @@ footer {
     .main-nav input {
         width: 100%;
     }
+}
+
+/* Transizioni fluide header */
+.main-header {
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+.main-header .logo img {
+    transition: height 0.3s ease;
+}
+.main-nav input,
+.main-nav button {
+    transition: opacity 0.3s ease;
+}
+
+/* Stile quando rimpicciolisce */
+.main-header.shrink {
+    padding: 5px 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.main-header.shrink .logo img {
+    height: 50px;
+}
+
+/* Nasconde gli input con transizione */
+.main-header.shrink .main-nav input,
+.main-header.shrink .main-nav button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.most-clicked {
+    background-color: lightgray;
+    border-left: 5px solid #c00;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.most-clicked h2 {
+    margin-top: 0;
+    color: #c00;
+    font-size: 1.5em;
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 10px;
+}
+
+.most-clicked ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.most-clicked li {
+    margin: 10px 0;
+}
+
+.most-clicked a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.most-clicked a:hover {
+    text-decoration: underline;
+    color: #c00;
 }
 
