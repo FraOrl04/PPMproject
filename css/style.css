@@ -243,7 +243,7 @@ footer {
     height: 50px;
 }
 
-/* Nasconde gli input con transizione */
+
 .main-header.shrink .main-nav input,
 .main-header.shrink .main-nav button {
     opacity: 0;
@@ -255,7 +255,7 @@ footer {
     border-left: 5px solid #c00;
     padding: 20px;
     max-width: 400px;
-    margin: 20px auto;
+    margin-left: 80%;
     font-family: Arial, sans-serif;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -288,5 +288,70 @@ footer {
 .most-clicked a:hover {
     text-decoration: underline;
     color: #c00;
+}
+.footer-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+.category {
+    flex: 1 1 200px;
+    max-width: 220px;
+}
+
+.category h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.category h2 a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.category h2 a:hover {
+    color: #0073e6;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category ul li {
+    margin-bottom: 6px;
+}
+
+.category ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.category ul li a:hover {
+    color: #0073e6;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+    .footer-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category {
+        max-width: 90%;
+        text-align: center;
+    }
 }
 
