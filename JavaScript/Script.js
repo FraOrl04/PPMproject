@@ -19,13 +19,16 @@ toggleMenu.addEventListener("click", function (e) {
     e.preventDefault();
     menuTendina.classList.toggle("show");
 
-    // Toggle manuale della proprietà CSS
+    // Gestione della posizione per evitare conflitti
     const currentPosition = menuTendina.style.position || window.getComputedStyle(menuTendina).position;
 
-    if (currentPosition === "fixed") {
+    if (menuTendina.classList.contains("show")) {
+        // Mostra il menu
         menuTendina.style.position = "absolute";
+        menuTendina.style.display = "block";
     } else {
-        menuTendina.style.position = "fixed";
+        // Nascondi il menu
+        menuTendina.style.display = "none";
     }
 });
 
@@ -33,25 +36,29 @@ toggleMenu.addEventListener("click", function (e) {
 document.addEventListener("click", function (e) {
     if (!toggleMenu.contains(e.target) && !menuTendina.contains(e.target)) {
         menuTendina.classList.remove("show");
+        menuTendina.style.display = "none"; // Assicurati che venga nascosto quando clicchi fuori
     }
 });
 
 
 
-//movimento barra
 let lastScrollTop = 0;
 const header = document.querySelector('.main-header');
+let ticking = false;
 
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-        // Scroll giù -> rimpicciolisce
-        header.classList.add('shrink');
-    } else {
-        // Scroll su -> torna normale
-        header.classList.remove('shrink');
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.classList.add('shrink');
+            } else {
+                header.classList.remove('shrink');
+            }
+            lastScrollTop = Math.max(0, scrollTop); // evita valori negativi
+            ticking = false;
+        });
+        ticking = true;
     }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // evita valori negativi
 });
