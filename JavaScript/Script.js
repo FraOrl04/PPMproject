@@ -42,23 +42,20 @@ document.addEventListener("click", function (e) {
 
 
 
-let lastScrollTop = 0;
 const header = document.querySelector('.main-header');
-let ticking = false;
+const sentinel = document.createElement('div');
+sentinel.style.height = '1px';
+document.body.prepend(sentinel);
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.classList.add('shrink');
-            } else {
-                header.classList.remove('shrink');
-            }
-            lastScrollTop = Math.max(0, scrollTop); // evita valori negativi
-            ticking = false;
-        });
-        ticking = true;
+const observer = new IntersectionObserver(entries => {
+    if (entries[0].boundingClientRect.top < 0) {
+        header.classList.add('shrink');
+    } else {
+        header.classList.remove('shrink');
     }
+}, {
+    threshold: [0]
 });
+
+observer.observe(sentinel);
+
